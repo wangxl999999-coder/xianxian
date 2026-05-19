@@ -13,7 +13,10 @@
     "pages/circle/circle",
     "pages/circlePublish/circlePublish",
     "pages/report/report",
-    "pages/agreement/agreement"
+    "pages/agreement/agreement",
+    "pages/myPublish/myPublish",
+    "pages/mySold/mySold",
+    "pages/myBought/myBought"
   ],
   "window": {
     "backgroundTextStyle": "light",

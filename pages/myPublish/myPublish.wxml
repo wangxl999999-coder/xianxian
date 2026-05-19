@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="goods-list" wx:if="{{goodsList.length > 0}}">
+    <view class="goods-item" wx:for="{{goodsList}}" wx:key="id">
+      <view class="goods-image">
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="status-tag" style="background: {{item.status === 1 ? '#52c41a' : item.status === 2 ? '#FF6B35' : '#999'}};">
+          {{item.statusName}}
+        </view>
+      </view>
+      <view class="goods-info">
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-price">¥{{item.price}}</view>
+        <view class="goods-bottom">
+          <text class="publish-time">{{item.publishTime}}</text>
+          <view class="action-buttons">
+            <text class="action-btn edit" bindtap="editGoods" data-id="{{item.id}}">编辑</text>
+            <text class="action-btn delete" bindtap="deleteGoods" data-id="{{item.id}}">删除</text>
+            <text class="action-btn mark" wx:if="{{item.status === 1}}" bindtap="markSold" data-id="{{item.id}}">已卖出</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{goodsList.length === 0}}">
+    <image src="/images/empty.png"></image>
+    <view class="empty-text">暂无发布的闲置物品</view>
+    <button class="publish-btn" bindtap="goPublish">去发布</button>
+  </view>
+</view>

@@ -32,15 +32,15 @@ Page({
   },
 
   goMyPublish() {
-    wx.showToast({ title: '我的发布功能开发中', icon: 'none' })
+    wx.navigateTo({ url: '/pages/myPublish/myPublish' })
   },
 
   goMySold() {
-    wx.showToast({ title: '卖出记录功能开发中', icon: 'none' })
+    wx.navigateTo({ url: '/pages/mySold/mySold' })
   },
 
   goMyBought() {
-    wx.showToast({ title: '买入记录功能开发中', icon: 'none' })
+    wx.navigateTo({ url: '/pages/myBought/myBought' })
   },
 
   goFavorites() {
