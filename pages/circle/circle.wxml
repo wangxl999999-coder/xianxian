@@ -1,0 +1,69 @@
+<view class="circle-container">
+  <view class="header-tabs">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      热门小区
+    </view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      邻里圈
+    </view>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 0}}">
+    <view class="location-bar">
+      <text class="location-icon">📍</text>
+      <text class="location-text">{{location || '定位中...'}}</text>
+      <text class="refresh-btn" bindtap="refreshLocation" wx:if="{{location}}">刷新</text>
+    </view>
+
+    <view class="community-list">
+      <view class="community-item" wx:for="{{communityList}}" wx:key="id">
+        <view class="community-rank">{{index + 1}}</view>
+        <view class="community-info">
+          <view class="community-name">{{item.name}}</view>
+          <view class="community-stats">
+            <text>活跃用户 {{item.userCount}} 人</text>
+            <text>今日动态 {{item.postCount}} 条</text>
+          </view>
+        </view>
+        <view class="community-distance">距您 {{item.distance}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 1}}">
+    <view class="post-list">
+      <view class="post-item" wx:for="{{postList}}" wx:key="id">
+        <view class="post-header">
+          <image class="user-avatar" src="{{item.user.avatar || '/images/default-avatar.png'}}"></image>
+          <view class="user-info">
+            <view class="user-name">{{item.user.nickname}}</view>
+            <view class="post-time">{{item.time}}</view>
+          </view>
+          <view class="post-type" style="background: {{item.typeColor}};">{{item.typeName}}</view>
+        </view>
+        <view class="post-content">{{item.content}}</view>
+        <view class="post-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image wx:for="{{item.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" class="post-image"></image>
+        </view>
+        <view class="post-footer">
+          <view class="footer-item">
+            <text class="footer-icon">💬</text>
+            <text>{{item.commentCount}}</text>
+          </view>
+          <view class="footer-item">
+            <text class="footer-icon">❤️</text>
+            <text>{{item.likeCount}}</text>
+          </view>
+          <view class="footer-item">
+            <text class="footer-icon">📍</text>
+            <text>{{item.communityName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="publish-float" bindtap="goPublish">
+      <text class="publish-icon">+</text>
+    </view>
+  </view>
+</view>

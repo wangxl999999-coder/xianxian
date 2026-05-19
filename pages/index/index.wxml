@@ -1,0 +1,71 @@
+<view class="index-container">
+  <view class="search-bar" bindtap="goSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-placeholder">搜索闲置物品...</text>
+  </view>
+
+  <scroll-view class="category-scroll" scroll-x="true" show-scrollbar="false">
+    <view class="category-list">
+      <view class="category-item {{currentCategory === 0 ? 'active' : ''}}" bindtap="selectCategory" data-id="0">
+        <text class="category-icon">🏠</text>
+        <text class="category-name">全部</text>
+      </view>
+      <view class="category-item {{currentCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" bindtap="selectCategory" data-id="{{item.id}}">
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="sort-bar">
+    <view class="sort-item {{sortType === 'time' ? 'active' : ''}}" bindtap="changeSort" data-type="time">
+      {{sortType === 'time' ? '↓ ' : ''}}最新
+    </view>
+    <view class="sort-item {{sortType === 'distance' ? 'active' : ''}}" bindtap="changeSort" data-type="distance">
+      {{sortType === 'distance' ? '↓ ' : ''}}距离
+    </view>
+    <view class="sort-item {{sortType === 'price_asc' ? 'active' : ''}}" bindtap="changeSort" data-type="price_asc">
+      价格↑
+    </view>
+    <view class="sort-item {{sortType === 'price_desc' ? 'active' : ''}}" bindtap="changeSort" data-type="price_desc">
+      价格↓
+    </view>
+  </view>
+
+  <view class="goods-list" wx:if="{{goodsList.length > 0}}">
+    <view class="goods-item" wx:for="{{goodsList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="goods-image">
+        <image src="{{item.cover}}" mode="aspectFill" lazy-load="true"></image>
+        <view class="goods-tag" wx:if="{{item.condition}}">
+          {{item.conditionName}}
+        </view>
+      </view>
+      <view class="goods-info">
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-price">
+          <text class="price-current">¥{{item.price}}</text>
+          <text class="price-original" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+        </view>
+        <view class="goods-bottom">
+          <view class="seller-info">
+            <image class="seller-avatar" src="{{item.seller.avatar || '/images/default-avatar.png'}}"></image>
+            <text class="seller-name">{{item.seller.nickname}}</text>
+            <view class="credit-tag" wx:if="{{item.seller.creditLevel >= 3}}">
+              ★{{item.seller.creditLevelName}}
+            </view>
+          </view>
+          <view class="goods-distance">{{item.distance}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{goodsList.length === 0 && !loading}}">
+    <image src="/images/empty.png"></image>
+    <view class="empty-text">暂无相关物品</view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

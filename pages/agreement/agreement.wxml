@@ -1,0 +1,76 @@
+<view class="agreement-container">
+  <scroll-view scroll-y="true" class="scroll-content">
+    <view class="agreement-content">
+      <view class="title">{{pageTitle}}</view>
+      
+      <view class="section">
+        <view class="section-title">一、服务说明</view>
+        <view class="section-text">
+          闲闲社区是一个本地社区二手闲置物品交易平台，为用户提供闲置物品发布、交易沟通、邻里互动等服务。用户在使用本平台服务时，应遵守相关法律法规及本协议约定。
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section-title">二、用户注册</view>
+        <view class="section-text">
+          1. 用户应当通过微信授权方式进行登录，确保提供的信息真实、准确、完整。<br/>
+          2. 用户账号所有权归平台所有，用户仅享有使用权。<br/>
+          3. 用户应妥善保管账号信息，对账号下的所有行为负责。
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section-title">三、交易规则</view>
+        <view class="section-text">
+          1. 用户发布的闲置物品信息应当真实、合法，不得发布违禁物品。<br/>
+          2. 本平台仅提供信息展示服务，不参与具体交易，交易风险由用户自行承担。<br/>
+          3. 建议用户线下当面交易，一手交钱一手交货，确保交易安全。
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section-title">四、内容规范</view>
+        <view class="section-text">
+          1. 禁止发布含有联系方式（电话、微信等）的内容。<br/>
+          2. 禁止发布站外交易引导内容。<br/>
+          3. 禁止发布虚假、欺诈、侵权等违法违规内容。<br/>
+          4. 系统自动检测敏感词，违规内容将被删除。
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section-title">五、信用体系</view>
+        <view class="section-text">
+          1. 平台建立用户信用体系，基于交易完成率、评价等因素计算信用分。<br/>
+          2. 完成交易可获得信用分，获得好评可额外加分。<br/>
+          3. 违规行为将扣除信用分，严重者将限制使用平台功能。
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section-title">六、隐私保护</view>
+        <view class="section-text">
+          1. 平台重视用户隐私保护，将按照隐私政策收集、使用用户信息。<br/>
+          2. 位置信息仅用于展示附近闲置物品和小区动态，不会公开用户精确位置。<br/>
+          3. 用户可以随时删除账号，清除个人信息。
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section-title">七、免责声明</view>
+        <view class="section-text">
+          1. 平台不对用户发布的内容真实性、合法性做保证。<br/>
+          2. 平台不对交易过程中产生的纠纷承担责任。<br/>
+          3. 因不可抗力导致服务中断的，平台不承担责任。
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section-title">八、协议修改</view>
+        <view class="section-text">
+          平台有权根据需要修改本协议，修改后的协议将在平台公示，用户继续使用即视为同意修改后的协议。
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

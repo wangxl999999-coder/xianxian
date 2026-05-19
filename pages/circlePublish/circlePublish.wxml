@@ -1,0 +1,47 @@
+<view class="publish-container">
+  <view class="type-selector">
+    <text class="type-label">发布类型：</text>
+    <view class="type-list">
+      <text class="type-item {{currentType === item.id ? 'active' : ''}}" wx:for="{{types}}" wx:key="id" bindtap="selectType" data-id="{{item.id}}" style="background: {{currentType === item.id ? item.color : '#f5f5f5'}}; color: {{currentType === item.id ? '#fff' : '#666'}};">
+        {{item.name}}
+      </text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <textarea class="content-textarea" placeholder="请输入您要发布的内容..." value="{{content}}" bindinput="onInput" maxlength="500" auto-height />
+    <view class="char-count">{{content.length}}/500</view>
+  </view>
+
+  <view class="image-section">
+    <view class="section-title">上传图片（最多9张）</view>
+    <view class="image-uploader">
+      <view class="image-item" wx:for="{{imageList}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill"></image>
+        <text class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</text>
+      </view>
+      <view class="upload-btn" wx:if="{{imageList.length < 9}}" bindtap="chooseImage">
+        <text class="upload-icon">+</text>
+        <text class="upload-text">上传图片</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="location-section">
+    <view class="section-title">所在小区</view>
+    <view class="location-selector" bindtap="selectCommunity">
+      <text class="location-text">{{selectedCommunity || '请选择小区'}}</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <view class="notice-section">
+    <text class="notice-text">📌 系统自动检测联系方式、站外交易等敏感词，违规内容将被删除</text>
+  </view>
+
+  <view class="publish-wrapper safe-area-bottom">
+    <button class="publish-btn btn-primary btn-large" bindtap="publishPost" disabled="{{!content.trim() || !selectedCommunity}}">
+      发布动态
+    </button>
+  </view>
+</view>

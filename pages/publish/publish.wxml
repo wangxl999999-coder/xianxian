@@ -1,0 +1,107 @@
+<view class="publish-container">
+  <view class="form-section">
+    <view class="section-title">上传图片（第一张为封面）</view>
+    <view class="image-uploader">
+      <view class="image-item" wx:for="{{imageList}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill"></image>
+        <text class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</text>
+      </view>
+      <view class="upload-btn" wx:if="{{imageList.length < 9}}" bindtap="chooseImage">
+        <text class="upload-icon">+</text>
+        <text class="upload-text">上传图片</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="form-section">
+    <view class="section-title">基本信息</view>
+    
+    <view class="form-item">
+      <text class="label">标题</text>
+      <input class="input" placeholder="请输入物品标题（最多30字）" value="{{formData.title}}" bindinput="onInput" data-field="title" maxlength="30" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">描述</text>
+      <textarea class="textarea" placeholder="请详细描述物品情况、使用痕迹等（最多200字）" value="{{formData.description}}" bindinput="onInput" data-field="description" maxlength="200" auto-height />
+    </view>
+
+    <view class="form-item" bindtap="selectCondition">
+      <text class="label">新旧程度</text>
+      <text class="value">{{formData.conditionName || '请选择'}}</text>
+      <text class="arrow">›</text>
+    </view>
+
+    <view class="form-item">
+      <text class="label">原价（元）</text>
+      <input class="input" placeholder="请输入原价" value="{{formData.originalPrice}}" bindinput="onInput" data-field="originalPrice" type="digit" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">现价（元）</text>
+      <input class="input" placeholder="请输入出售价格" value="{{formData.price}}" bindinput="onInput" data-field="price" type="digit" />
+    </view>
+
+    <view class="form-item" bindtap="selectCategory">
+      <text class="label">分类</text>
+      <text class="value">{{formData.categoryName || '请选择'}}</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <view class="form-section">
+    <view class="section-title">位置信息</view>
+    <view class="location-info">
+      <text class="location-icon">📍</text>
+      <text class="location-text">{{location || '获取中...'}}</text>
+      <text class="refresh-btn" bindtap="refreshLocation" wx:if="{{location}}">刷新</text>
+    </view>
+  </view>
+
+  <view class="notice-section">
+    <view class="notice-title">📋 交易须知</view>
+    <view class="notice-content">
+      <text>• 请如实描述物品情况，诚信交易</text>
+      <text>• 建议线下当面交易，一手交钱一手交货</text>
+      <text>• 交易前请核实物品真伪和质量</text>
+      <text>• 禁止发布违禁物品、虚假信息</text>
+      <text>• 系统自动检测联系方式、站外交易等敏感词</text>
+    </view>
+  </view>
+
+  <view class="publish-wrapper safe-area-bottom">
+    <button class="publish-btn btn-primary btn-large" bindtap="publishGoods" loading="{{publishing}}">
+      发布物品
+    </button>
+  </view>
+
+  <view class="condition-picker" wx:if="{{showConditionPicker}}" bindtap="hideConditionPicker">
+    <view class="picker-content" catchtap="stopPropagation">
+      <view class="picker-header">
+        <text class="picker-cancel" bindtap="hideConditionPicker">取消</text>
+        <text class="picker-title">选择新旧程度</text>
+        <text class="picker-confirm" bindtap="confirmCondition">确定</text>
+      </view>
+      <picker-view indicator-style="height: 80rpx;" value="{{[conditionIndex]}}" bindchange="onConditionChange">
+        <picker-view-column>
+          <view class="picker-item" wx:for="{{conditionOptions}}" wx:key="id">{{item.name}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+
+  <view class="category-picker" wx:if="{{showCategoryPicker}}" bindtap="hideCategoryPicker">
+    <view class="picker-content" catchtap="stopPropagation">
+      <view class="picker-header">
+        <text class="picker-cancel" bindtap="hideCategoryPicker">取消</text>
+        <text class="picker-title">选择分类</text>
+        <text class="picker-confirm" bindtap="confirmCategory">确定</text>
+      </view>
+      <picker-view indicator-style="height: 80rpx;" value="{{[categoryIndex]}}" bindchange="onCategoryChange">
+        <picker-view-column>
+          <view class="picker-item" wx:for="{{categories}}" wx:key="id">{{item.icon}} {{item.name}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>

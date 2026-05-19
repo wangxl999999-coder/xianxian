@@ -1,0 +1,77 @@
+<view class="login-container">
+  <view class="login-header">
+    <view class="logo">🎁</view>
+    <view class="title">闲闲社区</view>
+    <view class="subtitle">本地社区二手闲置交易平台</view>
+  </view>
+
+  <view class="login-content">
+    <view class="feature-list">
+      <view class="feature-item">
+        <text class="feature-icon">🔒</text>
+        <text class="feature-text">安全交易保障</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">📍</text>
+        <text class="feature-text">邻里就近交易</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">💯</text>
+        <text class="feature-text">信用体系保障</text>
+      </view>
+    </view>
+
+    <view class="agreement-tip">
+      <checkbox-group bindchange="onAgreementChange">
+        <label class="agreement-label">
+          <checkbox value="agree" checked="{{agreed}}" color="#FF6B35" />
+          <text>我已阅读并同意</text>
+          <text class="link" bindtap="showAgreement">《用户协议》</text>
+          <text>和</text>
+          <text class="link" bindtap="showPrivacy">《隐私政策》</text>
+        </label>
+      </checkbox-group>
+    </view>
+
+    <button class="login-btn btn-primary btn-large" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" disabled="{{!agreed}}">
+      <text class="btn-icon">👤</text>
+      微信一键登录
+    </button>
+
+    <view class="login-tip">
+      <text>登录即表示您同意上述协议</text>
+    </view>
+  </view>
+
+  <view class="modal" wx:if="{{showAuthModal}}" bindtap="closeModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">完善信息</text>
+        <text class="modal-close" bindtap="closeModal">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="auth-tip">为了提供更好的服务，建议您完善以下信息（可选）</view>
+        
+        <view class="auth-item">
+          <view class="auth-label">实名认证</view>
+          <view class="auth-desc">提高信用分，交易更可信</view>
+          <button class="auth-btn {{isVerified ? 'verified' : ''}}" size="mini" bindtap="goVerify">
+            {{isVerified ? '已认证' : '去认证'}}
+          </button>
+        </view>
+
+        <view class="auth-item">
+          <view class="auth-label">绑定手机号</view>
+          <view class="auth-desc">方便交易联系</view>
+          <button class="auth-btn {{isPhoneBound ? 'verified' : ''}}" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            {{isPhoneBound ? '已绑定' : '去绑定'}}
+          </button>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="skip-btn" bindtap="skipAuth">跳过</button>
+        <button class="confirm-btn btn-primary" bindtap="confirmAuth">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

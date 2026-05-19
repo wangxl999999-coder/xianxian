@@ -1,0 +1,26 @@
+<view class="favorites-container">
+  <view class="goods-list" wx:if="{{favoritesList.length > 0}}">
+    <view class="goods-item" wx:for="{{favoritesList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="goods-image">
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+      </view>
+      <view class="goods-info">
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-price">
+          <text class="price-current">¥{{item.price}}</text>
+          <text class="price-original" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+        </view>
+        <view class="goods-bottom">
+          <text class="goods-distance">{{item.distance}}</text>
+          <text class="delete-btn" catchtap="deleteFavorite" data-id="{{item.id}}">取消收藏</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{favoritesList.length === 0}}">
+    <image src="/images/empty.png"></image>
+    <view class="empty-text">暂无收藏</view>
+    <button class="go-home-btn" bindtap="goHome">去逛逛</button>
+  </view>
+</view>

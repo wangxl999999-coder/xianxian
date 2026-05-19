@@ -1,0 +1,168 @@
+.publish-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 140rpx;
+}
+
+.type-selector {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.type-label {
+  font-size: 28rpx;
+  color: #333;
+  margin-right: 20rpx;
+}
+
+.type-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type-item {
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  margin-right: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.content-section {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.content-textarea {
+  width: 100%;
+  min-height: 300rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.image-section,
+.location-section {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.image-uploader {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-item {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.image-item image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border-radius: 0 0 0 12rpx;
+}
+
+.upload-btn {
+  width: 160rpx;
+  height: 160rpx;
+  border: 2rpx dashed #ddd;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+}
+
+.upload-icon {
+  font-size: 40rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.upload-text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.location-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.location-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.notice-section {
+  padding: 20rpx 30rpx;
+}
+
+.notice-text {
+  font-size: 24rpx;
+  color: #FF6B35;
+}
+
+.publish-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: #fff;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.publish-btn {
+  margin: 0;
+}
+
+.publish-btn[disabled] {
+  opacity: 0.5;
+}

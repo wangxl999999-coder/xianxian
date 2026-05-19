@@ -1,0 +1,155 @@
+.report-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 140rpx;
+}
+
+.form-section {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.reason-list {
+  
+}
+
+.reason-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.reason-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.reason-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.check-icon {
+  color: #FF6B35;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.reason-item.active .reason-text {
+  color: #FF6B35;
+}
+
+.desc-textarea {
+  width: 100%;
+  min-height: 150rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.image-uploader {
+  display: flex;
+}
+
+.image-item {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+  position: relative;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.image-item image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border-radius: 0 0 0 12rpx;
+}
+
+.upload-btn {
+  width: 160rpx;
+  height: 160rpx;
+  border: 2rpx dashed #ddd;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+}
+
+.upload-icon {
+  font-size: 40rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.upload-text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.contact-section {
+  background: #fff;
+  padding: 30rpx;
+}
+
+.contact-label {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.contact-input {
+  width: 100%;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.submit-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: #fff;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.submit-btn {
+  margin: 0;
+}
+
+.submit-btn[disabled] {
+  opacity: 0.5;
+}

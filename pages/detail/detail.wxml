@@ -1,0 +1,86 @@
+<view class="detail-container">
+  <swiper class="image-swiper" indicator-dots="true" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular="true">
+    <swiper-item wx:for="{{goodsInfo.images}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="goods-info-card">
+    <view class="goods-price">
+      <text class="price-label">¥</text>
+      <text class="price-value">{{goodsInfo.price}}</text>
+      <text class="price-original" wx:if="{{goodsInfo.originalPrice}}">原价 ¥{{goodsInfo.originalPrice}}</text>
+    </view>
+    <view class="goods-title">{{goodsInfo.title}}</view>
+    <view class="goods-tags">
+      <text class="tag tag-primary">{{goodsInfo.conditionName}}</text>
+      <text class="tag tag-info">{{goodsInfo.categoryName}}</text>
+    </view>
+  </view>
+
+  <view class="seller-card" bindtap="goSellerHome">
+    <view class="seller-info">
+      <image class="seller-avatar" src="{{sellerInfo.avatar || '/images/default-avatar.png'}}"></image>
+      <view class="seller-detail">
+        <view class="seller-name">
+          {{sellerInfo.nickname}}
+          <text class="credit-tag" wx:if="{{sellerInfo.creditLevel >= 3}}">★ {{sellerInfo.creditLevelName}}</text>
+        </view>
+        <view class="seller-stats">
+          <text>成交 {{sellerInfo.sellCount}} 件</text>
+          <text>好评率 {{sellerInfo.goodRate}}%</text>
+        </view>
+      </view>
+    </view>
+    <text class="arrow">›</text>
+  </view>
+
+  <view class="desc-card">
+    <view class="card-title">商品描述</view>
+    <view class="desc-content">{{goodsInfo.description}}</view>
+  </view>
+
+  <view class="location-card">
+    <view class="location-info">
+      <text class="location-icon">📍</text>
+      <text class="location-text">距离 {{goodsInfo.distance}}</text>
+    </view>
+  </view>
+
+  <view class="review-card" wx:if="{{reviewList.length > 0}}">
+    <view class="card-title">用户评价 ({{reviewList.length}})</view>
+    <view class="review-list">
+      <view class="review-item" wx:for="{{reviewList}}" wx:key="id">
+        <view class="reviewer-info">
+          <image class="reviewer-avatar" src="{{item.user.avatar || '/images/default-avatar.png'}}"></image>
+          <text class="reviewer-name">{{item.user.nickname}}</text>
+          <text class="review-time">{{item.time}}</text>
+        </view>
+        <view class="review-content">{{item.content}}</view>
+        <view class="review-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image wx:for="{{item.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" class="review-image"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-bar safe-area-bottom">
+    <view class="bar-left">
+      <view class="bar-btn" bindtap="toggleFavorite">
+        <text class="btn-icon">{{isFavorite ? '❤️' : '🤍'}}</text>
+        <text class="btn-text">{{isFavorite ? '已收藏' : '收藏'}}</text>
+      </view>
+      <view class="bar-btn" bindtap="contactService">
+        <text class="btn-icon">💬</text>
+        <text class="btn-text">客服</text>
+      </view>
+      <view class="bar-btn" bindtap="showReport">
+        <text class="btn-icon">⚠️</text>
+        <text class="btn-text">举报</text>
+      </view>
+    </view>
+    <view class="bar-right">
+      <button class="buy-btn" bindtap="buyNow">立即购买</button>
+    </view>
+  </view>
+</view>

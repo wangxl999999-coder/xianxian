@@ -1,0 +1,41 @@
+<view class="report-container">
+  <view class="form-section">
+    <view class="section-title">选择举报原因</view>
+    <view class="reason-list">
+      <view class="reason-item {{selectedReason === item.id ? 'active' : ''}}" wx:for="{{reasons}}" wx:key="id" bindtap="selectReason" data-id="{{item.id}}">
+        <text class="reason-text">{{item.name}}</text>
+        <text class="check-icon" wx:if="{{selectedReason === item.id}}">✓</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="form-section">
+    <view class="section-title">详细描述（选填）</view>
+    <textarea class="desc-textarea" placeholder="请详细描述举报内容，以便我们更好地处理" value="{{description}}" bindinput="onInput" maxlength="200" auto-height />
+  </view>
+
+  <view class="form-section">
+    <view class="section-title">上传图片凭证（选填，最多3张）</view>
+    <view class="image-uploader">
+      <view class="image-item" wx:for="{{imageList}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill"></image>
+        <text class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</text>
+      </view>
+      <view class="upload-btn" wx:if="{{imageList.length < 3}}" bindtap="chooseImage">
+        <text class="upload-icon">+</text>
+        <text class="upload-text">上传图片</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="contact-section">
+    <view class="contact-label">联系方式（选填，方便我们核实）</view>
+    <input class="contact-input" placeholder="请输入手机号或微信" value="{{contact}}" bindinput="onContactInput" />
+  </view>
+
+  <view class="submit-wrapper safe-area-bottom">
+    <button class="submit-btn btn-primary btn-large" bindtap="submitReport" disabled="{{!selectedReason}}">
+      提交举报
+    </button>
+  </view>
+</view>

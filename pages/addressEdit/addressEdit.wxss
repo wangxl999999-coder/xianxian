@@ -1,0 +1,74 @@
+.address-edit-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 20rpx;
+  padding-bottom: 140rpx;
+}
+
+.form-item {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 2rpx;
+  display: flex;
+  align-items: center;
+}
+
+.form-item:first-child {
+  border-radius: 16rpx 16rpx 0 0;
+}
+
+.form-item:last-child {
+  border-radius: 0 0 16rpx 16rpx;
+}
+
+.label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.region-value {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.region-value .placeholder {
+  color: #999;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+
+.textarea {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.switch-item {
+  justify-content: space-between;
+}
+
+.save-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: #fff;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.save-btn {
+  margin: 0;
+}

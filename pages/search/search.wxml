@@ -1,0 +1,61 @@
+<view class="search-container">
+  <view class="search-header">
+    <view class="search-input-wrapper">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" placeholder="搜索闲置物品..." value="{{keyword}}" bindinput="onInput" confirm-type="search" bindconfirm="onSearch" focus="{{true}}" />
+      <text class="clear-icon" wx:if="{{keyword}}" bindtap="clearKeyword">×</text>
+    </view>
+    <text class="cancel-btn" bindtap="goBack">取消</text>
+  </view>
+
+  <view class="search-history" wx:if="{{searchHistory.length > 0 && !keyword}}">
+    <view class="section-header">
+      <text class="section-title">搜索历史</text>
+      <text class="clear-history" bindtap="clearHistory">清空</text>
+    </view>
+    <view class="history-tags">
+      <text class="history-tag" wx:for="{{searchHistory}}" wx:key="*this" bindtap="searchHistoryItem" data-keyword="{{item}}">
+        {{item}}
+      </text>
+    </view>
+  </view>
+
+  <view class="hot-search" wx:if="{{!keyword}}">
+    <view class="section-header">
+      <text class="section-title">🔥 热门搜索</text>
+    </view>
+    <view class="hot-tags">
+      <text class="hot-tag" wx:for="{{hotSearch}}" wx:key="*this" bindtap="searchHistoryItem" data-keyword="{{item}}">
+        {{item}}
+      </text>
+    </view>
+  </view>
+
+  <view class="search-result" wx:if="{{keyword}}">
+    <view class="result-header" wx:if="{{goodsList.length > 0}}">
+      <text class="result-count">找到 {{totalCount}} 件商品</text>
+    </view>
+
+    <view class="goods-list" wx:if="{{goodsList.length > 0}}">
+      <view class="goods-item" wx:for="{{goodsList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+        <view class="goods-image">
+          <image src="{{item.cover}}" mode="aspectFill"></image>
+        </view>
+        <view class="goods-info">
+          <view class="goods-title">{{item.title}}</view>
+          <view class="goods-price">¥{{item.price}}</view>
+          <view class="goods-distance">{{item.distance}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:if="{{goodsList.length === 0 && !loading}}">
+      <image src="/images/empty.png"></image>
+      <view class="empty-text">未找到相关商品</view>
+    </view>
+
+    <view class="loading" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+  </view>
+</view>

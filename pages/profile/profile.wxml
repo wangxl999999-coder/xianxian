@@ -1,0 +1,101 @@
+<view class="profile-container">
+  <view class="profile-header">
+    <image class="user-avatar" src="{{userInfo.avatar || '/images/default-avatar.png'}}"></image>
+    <view class="user-info">
+      <view class="user-name">
+        {{userInfo.nickname || '未登录'}}
+        <text class="credit-tag" wx:if="{{userInfo.creditLevel >= 3}}">★ {{userInfo.creditLevelName}}</text>
+      </view>
+      <view class="user-stats">
+        <text>信用分 {{userInfo.creditScore || 0}}</text>
+        <text>交易 {{userInfo.tradeCount || 0}} 次</text>
+      </view>
+    </view>
+    <text class="edit-btn" bindtap="goEdit">✏️</text>
+  </view>
+
+  <view class="credit-card">
+    <view class="credit-title">我的信用</view>
+    <view class="credit-progress">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{userInfo.creditScore || 0}}%;"></view>
+      </view>
+      <view class="credit-levels">
+        <text>一般</text>
+        <text>良好</text>
+        <text>优秀</text>
+        <text>极好</text>
+      </view>
+    </view>
+    <view class="credit-desc">
+      <text>完成交易 +5分</text>
+      <text>获得好评 +10分</text>
+      <text>实名认证 +20分</text>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <view class="menu-item" bindtap="goMyPublish">
+      <text class="menu-icon">📦</text>
+      <text class="menu-text">我的发布</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goMySold">
+      <text class="menu-icon">💰</text>
+      <text class="menu-text">卖出记录</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goMyBought">
+      <text class="menu-icon">🛒</text>
+      <text class="menu-text">买入记录</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goFavorites">
+      <text class="menu-icon">❤️</text>
+      <text class="menu-text">我的收藏</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <view class="menu-item" bindtap="goAddress">
+      <text class="menu-icon">📍</text>
+      <text class="menu-text">收货地址</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goVerify">
+      <text class="menu-icon">✅</text>
+      <text class="menu-text">实名认证</text>
+      <text class="tag" wx:if="{{userInfo.isVerified}}">已认证</text>
+      <text class="arrow" wx:else>›</text>
+    </view>
+    <view class="menu-item" bindtap="goBindPhone">
+      <text class="menu-icon">📱</text>
+      <text class="menu-text">绑定手机</text>
+      <text class="tag" wx:if="{{userInfo.isPhoneBound}}">已绑定</text>
+      <text class="arrow" wx:else>›</text>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <view class="menu-item" bindtap="goAgreement">
+      <text class="menu-icon">📋</text>
+      <text class="menu-text">用户协议</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goPrivacy">
+      <text class="menu-icon">🔒</text>
+      <text class="menu-text">隐私政策</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="contactService">
+      <text class="menu-icon">💬</text>
+      <text class="menu-text">联系客服</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <view class="logout-section" wx:if="{{userInfo.nickname}}">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+</view>
