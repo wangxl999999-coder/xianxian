@@ -26,11 +26,13 @@
       <textarea class="textarea" placeholder="请详细描述物品情况、使用痕迹等（最多200字）" value="{{formData.description}}" bindinput="onInput" data-field="description" maxlength="200" auto-height />
     </view>
 
-    <view class="form-item" bindtap="selectCondition">
-      <text class="label">新旧程度</text>
-      <text class="value">{{formData.conditionName || '请选择'}}</text>
-      <text class="arrow">›</text>
-    </view>
+    <picker bindchange="onConditionChange" value="{{conditionIndex}}" range="{{conditionOptions}}" range-key="name">
+      <view class="form-item">
+        <text class="label">新旧程度</text>
+        <text class="value">{{formData.conditionName || '请选择'}}</text>
+        <text class="arrow">›</text>
+      </view>
+    </picker>
 
     <view class="form-item">
       <text class="label">原价（元）</text>
@@ -42,11 +44,13 @@
       <input class="input" placeholder="请输入出售价格" value="{{formData.price}}" bindinput="onInput" data-field="price" type="digit" />
     </view>
 
-    <view class="form-item" bindtap="selectCategory">
-      <text class="label">分类</text>
-      <text class="value">{{formData.categoryName || '请选择'}}</text>
-      <text class="arrow">›</text>
-    </view>
+    <picker bindchange="onCategoryChange" value="{{categoryIndex}}" range="{{categories}}" range-key="name">
+      <view class="form-item">
+        <text class="label">分类</text>
+        <text class="value">{{formData.categoryName || '请选择'}}</text>
+        <text class="arrow">›</text>
+      </view>
+    </picker>
   </view>
 
   <view class="form-section">
@@ -75,33 +79,5 @@
     </button>
   </view>
 
-  <view class="condition-picker" wx:if="{{showConditionPicker}}" bindtap="hideConditionPicker">
-    <view class="picker-content" catchtap="stopPropagation">
-      <view class="picker-header">
-        <text class="picker-cancel" bindtap="hideConditionPicker">取消</text>
-        <text class="picker-title">选择新旧程度</text>
-        <text class="picker-confirm" bindtap="confirmCondition">确定</text>
-      </view>
-      <picker-view indicator-style="height: 80rpx;" value="{{[conditionIndex]}}" bindchange="onConditionChange">
-        <picker-view-column>
-          <view class="picker-item" wx:for="{{conditionOptions}}" wx:key="id">{{item.name}}</view>
-        </picker-view-column>
-      </picker-view>
-    </view>
-  </view>
 
-  <view class="category-picker" wx:if="{{showCategoryPicker}}" bindtap="hideCategoryPicker">
-    <view class="picker-content" catchtap="stopPropagation">
-      <view class="picker-header">
-        <text class="picker-cancel" bindtap="hideCategoryPicker">取消</text>
-        <text class="picker-title">选择分类</text>
-        <text class="picker-confirm" bindtap="confirmCategory">确定</text>
-      </view>
-      <picker-view indicator-style="height: 80rpx;" value="{{[categoryIndex]}}" bindchange="onCategoryChange">
-        <picker-view-column>
-          <view class="picker-item" wx:for="{{categories}}" wx:key="id">{{item.icon}} {{item.name}}</view>
-        </picker-view-column>
-      </picker-view>
-    </view>
-  </view>
 </view>

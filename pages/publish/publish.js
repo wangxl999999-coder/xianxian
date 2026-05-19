@@ -17,11 +17,9 @@ Page({
     },
     location: '',
     publishing: false,
-    showConditionPicker: false,
-    conditionIndex: 0,
+    conditionIndex: null,
     conditionOptions: CONDITION_OPTIONS,
-    showCategoryPicker: false,
-    categoryIndex: 0,
+    categoryIndex: null,
     categories: CATEGORIES
   },
 
@@ -82,51 +80,25 @@ Page({
     })
   },
 
-  selectCondition() {
-    this.setData({ showConditionPicker: true })
-  },
-
-  hideConditionPicker() {
-    this.setData({ showConditionPicker: false })
-  },
-
   onConditionChange(e) {
-    this.setData({ conditionIndex: e.detail.value[0] })
-  },
-
-  confirmCondition() {
-    const index = this.data.conditionIndex
+    const index = e.detail.value
     const condition = this.data.conditionOptions[index]
     this.setData({
+      conditionIndex: index,
       'formData.condition': condition.id,
-      'formData.conditionName': condition.name,
-      showConditionPicker: false
+      'formData.conditionName': condition.name
     })
-  },
-
-  selectCategory() {
-    this.setData({ showCategoryPicker: true })
-  },
-
-  hideCategoryPicker() {
-    this.setData({ showCategoryPicker: false })
   },
 
   onCategoryChange(e) {
-    this.setData({ categoryIndex: e.detail.value[0] })
-  },
-
-  confirmCategory() {
-    const index = this.data.categoryIndex
+    const index = e.detail.value
     const category = this.data.categories[index]
     this.setData({
+      categoryIndex: index,
       'formData.categoryId': category.id,
-      'formData.categoryName': category.name,
-      showCategoryPicker: false
+      'formData.categoryName': category.name
     })
   },
-
-  stopPropagation() {},
 
   publishGoods() {
     const { imageList, formData } = this.data
