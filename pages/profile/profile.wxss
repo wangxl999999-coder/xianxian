@@ -152,6 +152,15 @@
   color: #999;
 }
 
+.admin-item {
+  background: linear-gradient(135deg, #FFF5F0 0%, #FFF 100%);
+}
+
+.admin-item .menu-text {
+  color: #FF6B35;
+  font-weight: bold;
+}
+
 .logout-section {
   padding: 40rpx 20rpx;
 }

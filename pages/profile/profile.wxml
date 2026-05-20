@@ -93,6 +93,11 @@
       <text class="menu-text">联系客服</text>
       <text class="arrow">›</text>
     </view>
+    <view class="menu-item admin-item" wx:if="{{isAdmin}}" bindtap="goAdmin">
+      <text class="menu-icon">⚙️</text>
+      <text class="menu-text">管理后台</text>
+      <text class="arrow">›</text>
+    </view>
   </view>
 
   <view class="logout-section" wx:if="{{userInfo.nickname}}">
