@@ -16,7 +16,14 @@
     "pages/agreement/agreement",
     "pages/myPublish/myPublish",
     "pages/mySold/mySold",
-    "pages/myBought/myBought"
+    "pages/myBought/myBought",
+    "pages/admin/index",
+    "pages/admin/dashboard",
+    "pages/admin/goodsManage",
+    "pages/admin/reportManage",
+    "pages/admin/userManage",
+    "pages/admin/postManage",
+    "pages/admin/adminManage"
   ],
   "window": {
     "backgroundTextStyle": "light",

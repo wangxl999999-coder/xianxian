@@ -33,11 +33,17 @@
   </view>
 
   <view class="goods-list" wx:if="{{goodsList.length > 0}}">
-    <view class="goods-item" wx:for="{{goodsList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="goods-item {{item.isTop ? 'top-item' : ''}}" wx:for="{{goodsList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
       <view class="goods-image">
         <image src="{{item.cover}}" mode="aspectFill" lazy-load="true"></image>
-        <view class="goods-tag" wx:if="{{item.condition}}">
+        <view class="goods-tag top-tag" wx:if="{{item.isTop}}">
+          置顶
+        </view>
+        <view class="goods-tag" wx:if="{{item.condition && !item.isTop}}">
           {{item.conditionName}}
+        </view>
+        <view class="polish-tag" wx:if="{{item.isPolished}}">
+          ✨擦亮
         </view>
       </view>
       <view class="goods-info">

@@ -6,13 +6,25 @@
         <view class="status-tag" style="background: {{item.status === 1 ? '#52c41a' : item.status === 2 ? '#FF6B35' : '#999'}};">
           {{item.statusName}}
         </view>
+        <view class="top-tag" wx:if="{{item.isTop}}">置顶中</view>
+        <view class="polish-tag" wx:if="{{item.isPolished}}">已擦亮</view>
       </view>
       <view class="goods-info">
         <view class="goods-title">{{item.title}}</view>
         <view class="goods-price">¥{{item.price}}</view>
+        <view class="goods-stats" wx:if="{{item.isTop || item.isPolished}}">
+          <text class="stat-item" wx:if="{{item.isTop}}">置顶到期: {{item.topExpireTime}}</text>
+          <text class="stat-item" wx:if="{{item.isPolished}}">上次擦亮: {{item.lastPolishTime}}</text>
+        </view>
         <view class="goods-bottom">
-          <text class="publish-time">{{item.publishTime}}</text>
+          <text class="publish-time">{{item.publishTime}} · {{item.viewCount}}次浏览</text>
           <view class="action-buttons">
+            <text class="action-btn polish {{item.canPolish ? '' : 'disabled'}}" wx:if="{{item.status === 1}}" bindtap="polishGoods" data-id="{{item.id}}">
+              ✨擦亮
+            </text>
+            <text class="action-btn top" wx:if="{{item.status === 1 && !item.isTop}}" bindtap="showTopModal" data-id="{{item.id}}">
+              🚀置顶
+            </text>
             <text class="action-btn edit" bindtap="editGoods" data-id="{{item.id}}">编辑</text>
             <text class="action-btn delete" bindtap="deleteGoods" data-id="{{item.id}}">删除</text>
             <text class="action-btn mark" wx:if="{{item.status === 1}}" bindtap="markSold" data-id="{{item.id}}">已卖出</text>
@@ -26,5 +38,25 @@
     <image src="/images/empty.png"></image>
     <view class="empty-text">暂无发布的闲置物品</view>
     <button class="publish-btn" bindtap="goPublish">去发布</button>
+  </view>
+
+  <view class="top-modal" wx:if="{{showTopModal}}" bindtap="hideTopModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">选择置顶时长</text>
+        <text class="modal-close" bindtap="hideTopModal">✕</text>
+      </view>
+      <view class="modal-body">
+        <view class="top-list">
+          <view class="top-item" wx:for="{{topOptions}}" wx:key="id" bindtap="selectTopDuration" data-duration="{{item.id}}" data-price="{{item.price}}">
+            <view class="top-info">
+              <text class="top-duration">{{item.name}}</text>
+              <text class="top-desc">获得更多曝光机会</text>
+            </view>
+            <text class="top-price">¥{{item.price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

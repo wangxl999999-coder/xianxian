@@ -120,10 +120,267 @@
 
 .desc-card,
 .location-card,
-.review-card {
+.review-card,
+.question-card {
   background: #fff;
   padding: 30rpx;
   margin-bottom: 20rpx;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.ask-btn {
+  font-size: 26rpx;
+  color: #FF6B35;
+  padding: 10rpx 20rpx;
+  border: 1rpx solid #FF6B35;
+  border-radius: 30rpx;
+}
+
+.question-input {
+  margin-bottom: 30rpx;
+}
+
+.input-area {
+  width: 100%;
+  min-height: 160rpx;
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.input-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15rpx;
+}
+
+.char-count {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.submit-btn {
+  background: #FF6B35;
+  color: #fff;
+  border-radius: 30rpx;
+  padding: 10rpx 30rpx;
+  font-size: 26rpx;
+  border: none;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.question-list {
+  
+}
+
+.question-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.question-item:last-child {
+  border-bottom: none;
+}
+
+.questioner-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.questioner-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+  background: #f5f5f5;
+}
+
+.questioner-name {
+  font-size: 26rpx;
+  color: #333;
+  margin-right: 20rpx;
+}
+
+.question-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.question-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15rpx;
+}
+
+.reply-section {
+  background: #f9f9f9;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  margin-top: 15rpx;
+}
+
+.reply-label {
+  font-size: 24rpx;
+  color: #FF6B35;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.reply-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 10rpx;
+}
+
+.reply-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.reply-btn {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #FF6B35;
+  padding: 8rpx 20rpx;
+  border: 1rpx solid #FF6B35;
+  border-radius: 20rpx;
+  margin-top: 10rpx;
+}
+
+.empty-question {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999;
+  font-size: 26rpx;
+}
+
+.poster-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.poster-content {
+  width: 600rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.poster-close {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.poster-body {
+  padding: 30rpx;
+}
+
+.poster-image {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  background: #f5f5f5;
+}
+
+.poster-info {
+  margin-bottom: 20rpx;
+}
+
+.poster-title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  line-height: 1.5;
+}
+
+.poster-price {
+  font-size: 36rpx;
+  color: #FF6B35;
+  font-weight: bold;
+}
+
+.poster-qrcode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  border-top: 1rpx solid #f5f5f5;
+}
+
+.qrcode-placeholder {
+  width: 160rpx;
+  height: 160rpx;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.qrcode-tip {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.poster-actions {
+  display: flex;
+  border-top: 1rpx solid #f5f5f5;
+}
+
+.poster-btn {
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 28rpx;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  background: #fff;
+}
+
+.save-btn {
+  color: #666;
+  border-right: 1rpx solid #f5f5f5;
+}
+
+.share-btn {
+  color: #FF6B35;
 }
 
 .card-title {

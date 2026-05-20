@@ -10,12 +10,14 @@ Page({
   },
 
   onLoad() {
+    console.log('circle page onLoad')
     this.getLocation()
     this.loadCommunityList()
     this.loadPostList()
   },
 
   onShow() {
+    console.log('circle page onShow')
     this.loadPostList()
   },
 
@@ -43,7 +45,8 @@ Page({
   },
 
   switchTab(e) {
-    const index = e.currentTarget.dataset.index
+    const index = parseInt(e.currentTarget.dataset.index)
+    console.log('switchTab to:', index)
     this.setData({ currentTab: index })
   },
 
@@ -58,37 +61,52 @@ Page({
         distance: `${(Math.random() * 2).toFixed(1)}km`
       })
     }
+    console.log('communityList:', mockData)
     this.setData({ communityList: mockData })
   },
 
   loadPostList() {
     const mockData = []
-    for (let i = 0; i < 10; i++) {
-      const typeIndex = i % 3
-      mockData.push({
-        id: i + 1,
-        user: {
-          nickname: `用户${i + 1}`,
-          avatar: ''
-        },
-        type: CIRCLE_TYPES[typeIndex].id,
-        typeName: CIRCLE_TYPES[typeIndex].name,
-        typeColor: CIRCLE_TYPES[typeIndex].color,
-        content: `这是一条${CIRCLE_TYPES[typeIndex].name}动态，内容非常丰富，希望有人能看到联系我。`,
-        time: `${Math.floor(Math.random() * 24)}小时前`,
-        images: i % 2 === 0 ? [
-          `https://picsum.photos/200/200?random=${200 + i}`,
-          `https://picsum.photos/200/200?random=${201 + i}`
-        ] : [],
-        commentCount: Math.floor(Math.random() * 20),
-        likeCount: Math.floor(Math.random() * 50),
-        communityName: `阳光花园小区`
-      })
+    try {
+      for (let i = 0; i < 10; i++) {
+        const typeIndex = i % 3
+        mockData.push({
+          id: i + 1,
+          user: {
+            nickname: `用户${i + 1}`,
+            avatar: ''
+          },
+          type: CIRCLE_TYPES[typeIndex].id,
+          typeName: CIRCLE_TYPES[typeIndex].name,
+          typeColor: CIRCLE_TYPES[typeIndex].color,
+          content: `这是一条${CIRCLE_TYPES[typeIndex].name}动态，内容非常丰富，希望有人能看到联系我。`,
+          time: `${Math.floor(Math.random() * 24)}小时前`,
+          images: i % 2 === 0 ? [] : [],
+          commentCount: Math.floor(Math.random() * 20),
+          likeCount: Math.floor(Math.random() * 50),
+          communityName: `阳光花园小区`
+        })
+      }
+      console.log('postList:', mockData)
+      this.setData({ postList: mockData })
+    } catch (error) {
+      console.error('loadPostList error:', error)
     }
-    this.setData({ postList: mockData })
   },
 
   goPublish() {
     wx.navigateTo({ url: '/pages/circlePublish/circlePublish' })
+  },
+
+  onPullDownRefresh() {
+    console.log('onPullDownRefresh')
+    if (this.data.currentTab === 0) {
+      this.loadCommunityList()
+    } else {
+      this.loadPostList()
+    }
+    setTimeout(() => {
+      wx.stopPullDownRefresh()
+    }, 1000)
   }
 })

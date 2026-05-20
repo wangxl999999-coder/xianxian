@@ -4,6 +4,10 @@
   padding-bottom: 120rpx;
 }
 
+.tab-content {
+  min-height: 80vh;
+}
+
 .header-tabs {
   display: flex;
   background: #fff;
@@ -219,4 +223,27 @@
   font-size: 48rpx;
   color: #fff;
   font-weight: bold;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 200rpx 40rpx;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #999;
 }

@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="user-list">
+    <view class="user-item" wx:for="{{userList}}" wx:key="id">
+      <view class="user-info" bindtap="viewUser" data-id="{{item.id}}">
+        <image class="user-avatar" src="{{item.avatar}}"></image>
+        <view class="user-detail">
+          <view class="user-name">
+            {{item.nickname}}
+            <text class="verify-tag" wx:if="{{item.isVerified}}">已认证</text>
+            <text class="ban-tag" wx:if="{{item.isBanned}}">已封禁</text>
+          </view>
+          <view class="user-phone">{{item.phone}}</view>
+          <view class="user-stats">
+            <text>发布{{item.publishCount}}件</text>
+            <text>成交{{item.tradeCount}}件</text>
+            <text class="credit-tag">{{item.creditLevelName}}</text>
+          </view>
+          <view class="register-time">注册时间：{{item.registerTime}}</view>
+        </view>
+      </view>
+      <view class="user-actions">
+        <text class="action-btn {{item.isBanned ? 'unban-btn' : 'ban-btn'}}" bindtap="toggleBan" data-id="{{item.id}}">
+          {{item.isBanned ? '解封' : '封禁'}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="no-more" wx:if="{{!hasMore && userList.length > 0}}">
+    <text>没有更多了</text>
+  </view>
+
+  <view class="empty" wx:if="{{userList.length === 0 && !loading}}">
+    <text>暂无数据</text>
+  </view>
+</view>

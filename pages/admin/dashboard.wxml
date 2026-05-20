@@ -1,0 +1,98 @@
+<view class="container">
+  <view class="date-tabs">
+    <view class="tab-item {{dateRange === '今日' ? 'active' : ''}}" bindtap="changeDateRange" data-range="今日">今日</view>
+    <view class="tab-item {{dateRange === '本周' ? 'active' : ''}}" bindtap="changeDateRange" data-range="本周">本周</view>
+    <view class="tab-item {{dateRange === '本月' ? 'active' : ''}}" bindtap="changeDateRange" data-range="本月">本月</view>
+  </view>
+
+  <view class="stats-section">
+    <view class="section-title">累计数据</view>
+    <view class="stats-grid">
+      <view class="stat-card">
+        <text class="stat-icon">📦</text>
+        <text class="stat-value">{{totalStats.goods}}</text>
+        <text class="stat-label">发布总量</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-icon">👥</text>
+        <text class="stat-value">{{totalStats.users}}</text>
+        <text class="stat-label">用户总数</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-icon">💰</text>
+        <text class="stat-value">{{totalStats.trades}}</text>
+        <text class="stat-label">成交总量</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-icon">⚠️</text>
+        <text class="stat-value">{{totalStats.reports}}</text>
+        <text class="stat-label">举报总数</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="stats-section">
+    <view class="section-title">新增数据</view>
+    <view class="stats-grid">
+      <view class="stat-card highlight">
+        <text class="stat-icon">📦</text>
+        <text class="stat-value">{{todayStats.goods}}</text>
+        <text class="stat-label">新发布</text>
+      </view>
+      <view class="stat-card highlight">
+        <text class="stat-icon">👥</text>
+        <text class="stat-value">{{todayStats.users}}</text>
+        <text class="stat-label">新用户</text>
+      </view>
+      <view class="stat-card highlight">
+        <text class="stat-icon">💰</text>
+        <text class="stat-value">{{todayStats.trades}}</text>
+        <text class="stat-label">新成交</text>
+      </view>
+      <view class="stat-card highlight warning">
+        <text class="stat-icon">⚠️</text>
+        <text class="stat-value">{{todayStats.reports}}</text>
+        <text class="stat-label">新举报</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="chart-section">
+    <view class="section-title">近7天发布趋势</view>
+    <view class="chart-container">
+      <view class="chart-bars">
+        <view class="chart-bar" wx:for="{{chartData}}" wx:key="date">
+          <view class="bar goods-bar" style="height: {{item.goods / 8}}%;"></view>
+          <view class="bar trades-bar" style="height: {{item.trades * 3}}%;"></view>
+          <text class="bar-label">{{item.date}}</text>
+        </view>
+      </view>
+      <view class="chart-legend">
+        <view class="legend-item">
+          <view class="legend-dot goods-dot"></view>
+          <text>发布量</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-dot trades-dot"></view>
+          <text>成交量</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="category-section">
+    <view class="section-title">分类占比</view>
+    <view class="category-list">
+      <view class="category-item" wx:for="{{categoryStats}}" wx:key="name">
+        <view class="category-info">
+          <text class="category-name">{{item.name}}</text>
+          <text class="category-count">{{item.count}}件</text>
+        </view>
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{item.percent}}%;"></view>
+        </view>
+        <text class="category-percent">{{item.percent}}%</text>
+      </view>
+    </view>
+  </view>
+</view>

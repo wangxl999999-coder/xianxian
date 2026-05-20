@@ -96,6 +96,8 @@ Page({
       const distance = Math.random() * 5
       const price = Math.floor(Math.random() * 5000) + 100
       const originalPrice = Math.floor(price * 1.5)
+      const isTop = i < 2
+      const isPolished = Math.random() > 0.5
       
       list.push({
         id: Date.now() + i,
@@ -107,6 +109,10 @@ Page({
         conditionName: conditions[i % conditions.length],
         distance: distance < 1 ? `${Math.round(distance * 1000)}m` : `${distance.toFixed(1)}km`,
         publishTime: Date.now() - i * 3600000,
+        isTop,
+        topExpireTime: isTop ? Date.now() + 3600000 : null,
+        isPolished,
+        polishTime: isPolished ? Date.now() - 1800000 : null,
         seller: {
           id: i + 1,
           nickname: `用户${i + 1}`,

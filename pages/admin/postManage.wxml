@@ -1,0 +1,52 @@
+<view class="container">
+  <scroll-view class="status-tabs" scroll-x="true" show-scrollbar="false">
+    <view class="tab-list">
+      <view class="tab-item {{status === item.id ? 'active' : ''}}" wx:for="{{statusOptions}}" wx:key="id" bindtap="changeStatus" data-status="{{item.id}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="post-list">
+    <view class="post-item" wx:for="{{postList}}" wx:key="id">
+      <view class="post-header" bindtap="viewDetail" data-id="{{item.id}}">
+        <view class="type-tag type-{{item.type}}">{{item.typeName}}</view>
+        <view class="author-info">
+          <text class="author-name">{{item.authorName}}</text>
+          <text class="publish-time">{{item.publishTime}}</text>
+        </view>
+        <view class="ban-tag" wx:if="{{item.isBanned}}">已封禁</view>
+      </view>
+      <view class="post-content" bindtap="viewDetail" data-id="{{item.id}}">
+        <text class="post-title">{{item.title}}</text>
+        <view class="post-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image wx:for="{{item.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" class="post-image"></image>
+        </view>
+      </view>
+      <view class="post-footer">
+        <view class="post-stats">
+          <text class="stat">👁 {{item.viewCount}}</text>
+          <text class="stat">❤️ {{item.likeCount}}</text>
+          <text class="stat">💬 {{item.commentCount}}</text>
+        </view>
+        <view class="post-actions">
+          <text class="action-btn {{item.isBanned ? 'restore-btn' : 'delete-btn'}}" bindtap="toggleBan" data-id="{{item.id}}">
+            {{item.isBanned ? '恢复' : '删除'}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="no-more" wx:if="{{!hasMore && postList.length > 0}}">
+    <text>没有更多了</text>
+  </view>
+
+  <view class="empty" wx:if="{{postList.length === 0 && !loading}}">
+    <text>暂无数据</text>
+  </view>
+</view>

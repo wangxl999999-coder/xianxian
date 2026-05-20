@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "圈子"
+  "navigationBarTitleText": "圈子",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f5f5f5"
 }

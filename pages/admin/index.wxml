@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="header">
+    <view class="admin-info">
+      <image class="admin-avatar" src="/images/default-avatar.png"></image>
+      <view class="admin-detail">
+        <text class="admin-name">管理员</text>
+        <text class="admin-role">超级管理员</text>
+      </view>
+    </view>
+    <view class="logout-btn" bindtap="logout">退出</view>
+  </view>
+
+  <view class="stats-card">
+    <view class="stats-title">今日数据概览</view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{stats.todayGoods}}</text>
+        <text class="stat-label">今日发布</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{stats.todayUsers}}</text>
+        <text class="stat-label">新增用户</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{stats.todayTrades}}</text>
+        <text class="stat-label">成交订单</text>
+      </view>
+      <view class="stat-item warning">
+        <text class="stat-value">{{stats.pendingReports}}</text>
+        <text class="stat-label">待审核举报</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="menu-card">
+    <view class="menu-title">管理功能</view>
+    <view class="menu-grid">
+      <view class="menu-item" wx:for="{{menuList}}" wx:key="id" bindtap="goPage" data-page="{{item.id}}">
+        <view class="menu-icon" style="background: {{item.color}}20;">
+          <text class="icon-text">{{item.icon}}</text>
+          <view class="badge" wx:if="{{item.badge}}">{{item.badge}}</view>
+        </view>
+        <text class="menu-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

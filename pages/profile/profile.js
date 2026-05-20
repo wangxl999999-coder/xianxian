@@ -2,7 +2,8 @@ const app = getApp()
 
 Page({
   data: {
-    userInfo: {}
+    userInfo: {},
+    isAdmin: true
   },
 
   onLoad() {
@@ -83,6 +84,10 @@ Page({
         wx.showToast({ title: '客服功能暂未开放', icon: 'none' })
       }
     })
+  },
+
+  goAdmin() {
+    wx.navigateTo({ url: '/pages/admin/index' })
   },
 
   logout() {

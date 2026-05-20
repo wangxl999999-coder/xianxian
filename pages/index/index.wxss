@@ -133,6 +133,28 @@
   border-radius: 8rpx;
 }
 
+.top-tag {
+  background: linear-gradient(135deg, #FF6B35, #FF8F5E);
+  font-weight: bold;
+}
+
+.polish-tag {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 8rpx;
+  font-weight: bold;
+}
+
+.top-item {
+  background: linear-gradient(180deg, #FFF5F0, #fff);
+  border-radius: 20rpx;
+}
+
 .goods-info {
   padding: 20rpx 10rpx;
 }

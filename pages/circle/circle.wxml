@@ -31,7 +31,7 @@
   </view>
 
   <view class="tab-content" wx:if="{{currentTab === 1}}">
-    <view class="post-list">
+    <view class="post-list" wx:if="{{postList.length > 0}}">
       <view class="post-item" wx:for="{{postList}}" wx:key="id">
         <view class="post-header">
           <image class="user-avatar" src="{{item.user.avatar || '/images/default-avatar.png'}}"></image>
@@ -60,6 +60,12 @@
           </view>
         </view>
       </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{postList.length === 0}}">
+      <view class="empty-icon">📝</view>
+      <view class="empty-text">暂无邻里圈动态</view>
+      <view class="empty-tip">点击右下角按钮发布第一条动态</view>
     </view>
 
     <view class="publish-float" bindtap="goPublish">

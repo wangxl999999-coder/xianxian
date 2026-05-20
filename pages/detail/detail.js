@@ -6,7 +6,13 @@ Page({
     goodsInfo: {},
     sellerInfo: {},
     reviewList: [],
-    isFavorite: false
+    questionList: [],
+    isFavorite: false,
+    isSeller: false,
+    showQuestionInput: false,
+    questionContent: '',
+    replyTo: null,
+    showPoster: false
   },
 
   onLoad(options) {
@@ -64,9 +70,125 @@ Page({
         }
       ]
 
-      this.setData({ goodsInfo, sellerInfo, reviewList })
+      const questionList = [
+        {
+          id: 1,
+          user: { nickname: '买家C', avatar: '' },
+          content: '请问还能小刀吗？',
+          time: '2024-01-20 14:30',
+          reply: {
+            content: '已经是最低价了哦，送原装充电器~',
+            time: '2024-01-20 15:00'
+          }
+        },
+        {
+          id: 2,
+          user: { nickname: '买家D', avatar: '' },
+          content: '支持同城面交吗？在哪个位置？',
+          time: '2024-01-19 10:20',
+          reply: null
+        }
+      ]
+
+      this.setData({ goodsInfo, sellerInfo, reviewList, questionList, isSeller: false })
       wx.hideLoading()
     }, 500)
+  },
+
+  toggleQuestionInput() {
+    this.setData({ 
+      showQuestionInput: !this.data.showQuestionInput,
+      replyTo: null,
+      questionContent: ''
+    })
+  },
+
+  onQuestionInput(e) {
+    this.setData({ questionContent: e.detail.value })
+  },
+
+  submitQuestion() {
+    const content = this.data.questionContent.trim()
+    if (!content) {
+      wx.showToast({ title: '请输入内容', icon: 'none' })
+      return
+    }
+
+    const newQuestion = {
+      id: Date.now(),
+      user: { nickname: '我', avatar: '' },
+      content: content,
+      time: new Date().toLocaleString(),
+      reply: null
+    }
+
+    this.setData({
+      questionList: [newQuestion, ...this.data.questionList],
+      showQuestionInput: false,
+      questionContent: ''
+    })
+
+    wx.showToast({ title: '提问成功', icon: 'success' })
+  },
+
+  replyQuestion(e) {
+    const questionId = e.currentTarget.dataset.id
+    this.setData({ 
+      showQuestionInput: true,
+      replyTo: questionId,
+      questionContent: ''
+    })
+  },
+
+  submitReply() {
+    const content = this.data.questionContent.trim()
+    if (!content) {
+      wx.showToast({ title: '请输入回复内容', icon: 'none' })
+      return
+    }
+
+    const questionList = this.data.questionList.map(q => {
+      if (q.id === this.data.replyTo) {
+        return {
+          ...q,
+          reply: {
+            content: content,
+            time: new Date().toLocaleString()
+          }
+        }
+      }
+      return q
+    })
+
+    this.setData({
+      questionList,
+      showQuestionInput: false,
+      questionContent: '',
+      replyTo: null
+    })
+
+    wx.showToast({ title: '回复成功', icon: 'success' })
+  },
+
+  generatePoster() {
+    this.setData({ showPoster: true })
+    wx.showToast({ title: '海报生成中...', icon: 'loading', duration: 1500 })
+  },
+
+  closePoster() {
+    this.setData({ showPoster: false })
+  },
+
+  savePoster() {
+    wx.showToast({ title: '已保存到相册', icon: 'success' })
+    this.setData({ showPoster: false })
+  },
+
+  sharePoster() {
+    wx.showToast({ title: '分享功能开发中', icon: 'none' })
+  },
+
+  stopPropagation() {
   },
 
   checkFavorite() {

@@ -1,0 +1,88 @@
+<view class="container">
+  <scroll-view class="status-tabs" scroll-x="true" show-scrollbar="false">
+    <view class="tab-list">
+      <view class="tab-item {{status === item.id ? 'active' : ''}}" wx:for="{{statusOptions}}" wx:key="id" bindtap="changeStatus" data-status="{{item.id}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="report-list">
+    <view class="report-item" wx:for="{{reportList}}" wx:key="id" bindtap="viewDetail" data-id="{{item.id}}">
+      <view class="report-header">
+        <view class="report-type">
+          <text class="type-tag">{{item.type}}</text>
+          <text class="reason-tag">{{item.reason}}</text>
+        </view>
+        <text class="status-tag status-{{item.status}}">{{item.statusName}}</text>
+      </view>
+      <view class="report-title">{{item.targetTitle}}</view>
+      <view class="report-meta">
+        <text>举报者：{{item.reporterName}}</text>
+        <text>被举报：{{item.reportedName}}</text>
+      </view>
+      <view class="report-time">{{item.reportTime}}</view>
+    </view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="no-more" wx:if="{{!hasMore && reportList.length > 0}}">
+    <text>没有更多了</text>
+  </view>
+
+  <view class="empty" wx:if="{{reportList.length === 0 && !loading}}">
+    <text>暂无数据</text>
+  </view>
+
+  <view class="modal-overlay" wx:if="{{showDetail}}" bindtap="closeDetail">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">举报详情</text>
+        <text class="close-btn" bindtap="closeDetail">✕</text>
+      </view>
+      <view class="modal-body" wx:if="{{currentReport}}">
+        <view class="detail-section">
+          <text class="section-label">举报类型</text>
+          <text class="section-value">{{currentReport.type}}</text>
+        </view>
+        <view class="detail-section">
+          <text class="section-label">举报原因</text>
+          <text class="section-value">{{currentReport.reason}}</text>
+        </view>
+        <view class="detail-section">
+          <text class="section-label">举报内容</text>
+          <text class="section-value target">{{currentReport.targetTitle}}</text>
+        </view>
+        <view class="detail-section">
+          <text class="section-label">举报描述</text>
+          <text class="section-value">{{currentReport.description}}</text>
+        </view>
+        <view class="detail-section" wx:if="{{currentReport.images && currentReport.images.length > 0}}">
+          <text class="section-label">举报图片</text>
+          <view class="image-list">
+            <image wx:for="{{currentReport.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" class="report-image"></image>
+          </view>
+        </view>
+        <view class="detail-section">
+          <text class="section-label">举报者</text>
+          <text class="section-value">{{currentReport.reporterName}}</text>
+        </view>
+        <view class="detail-section">
+          <text class="section-label">被举报者</text>
+          <text class="section-value">{{currentReport.reportedName}}</text>
+        </view>
+        <view class="detail-section">
+          <text class="section-label">举报时间</text>
+          <text class="section-value">{{currentReport.reportTime}}</text>
+        </view>
+      </view>
+      <view class="modal-footer" wx:if="{{currentReport && currentReport.status === 1}}">
+        <button class="modal-btn reject-btn" bindtap="processReport" data-action="reject">驳回举报</button>
+        <button class="modal-btn ban-btn" bindtap="processReport" data-action="ban">封禁并下架</button>
+      </view>
+    </view>
+  </view>
+</view>

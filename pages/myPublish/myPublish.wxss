@@ -41,6 +41,41 @@
   font-size: 20rpx;
 }
 
+.top-tag {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #FF6B35, #FF8E53);
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.polish-tag {
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.goods-stats {
+  margin: 10rpx 0;
+}
+
+.stat-item {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 5rpx;
+}
+
 .goods-info {
   flex: 1;
   margin-left: 20rpx;
@@ -100,6 +135,104 @@
 .action-btn.mark {
   background: #F6FFED;
   color: #52C41A;
+}
+
+.action-btn.polish {
+  background: #FFF7E6;
+  color: #FA8C16;
+}
+
+.action-btn.polish.disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.action-btn.top {
+  background: #E6F7FF;
+  color: #1890FF;
+}
+
+.top-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-close {
+  font-size: 32rpx;
+  color: #999;
+  padding: 10rpx;
+}
+
+.modal-body {
+  padding: 20rpx 30rpx 40rpx;
+}
+
+.top-list {
+  
+}
+
+.top-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.top-item:last-child {
+  border-bottom: none;
+}
+
+.top-info {
+  
+}
+
+.top-duration {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.top-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.top-price {
+  font-size: 36rpx;
+  color: #FF6B35;
+  font-weight: bold;
 }
 
 .empty {

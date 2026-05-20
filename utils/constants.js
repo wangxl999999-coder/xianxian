@@ -46,11 +46,44 @@ const SORT_OPTIONS = [
   { id: 'price_desc', name: '价格最高' }
 ]
 
+const TOP_DURATION_OPTIONS = [
+  { id: 2, name: '2小时', price: 2 },
+  { id: 4, name: '4小时', price: 3 },
+  { id: 6, name: '6小时', price: 5 },
+  { id: 12, name: '12小时', price: 8 },
+  { id: 24, name: '24小时', price: 15 }
+]
+
+const GOODS_STATUS = {
+  SELLING: 1,
+  SOLD: 2,
+  OFF_SHELF: 3,
+  REPORTED: 4,
+  BANNED: 5
+}
+
+const REPORT_STATUS = {
+  PENDING: 1,
+  PROCESSING: 2,
+  RESOLVED: 3,
+  REJECTED: 4
+}
+
+const ADMIN_ROLES = {
+  SUPER_ADMIN: 1,
+  ADMIN: 2,
+  MODERATOR: 3
+}
+
 module.exports = {
   CATEGORIES,
   CONDITION_OPTIONS,
   CIRCLE_TYPES,
   CREDIT_LEVELS,
   REPORT_REASONS,
-  SORT_OPTIONS
+  SORT_OPTIONS,
+  TOP_DURATION_OPTIONS,
+  GOODS_STATUS,
+  REPORT_STATUS,
+  ADMIN_ROLES
 }

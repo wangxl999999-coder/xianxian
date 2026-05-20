@@ -1,0 +1,121 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 20rpx;
+}
+
+.user-list {
+  
+}
+
+.user-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 25rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background: #f5f5f5;
+}
+
+.user-detail {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.verify-tag {
+  margin-left: 15rpx;
+  padding: 4rpx 12rpx;
+  background: #E6F7FF;
+  color: #1890FF;
+  font-size: 20rpx;
+  border-radius: 20rpx;
+}
+
+.ban-tag {
+  margin-left: 15rpx;
+  padding: 4rpx 12rpx;
+  background: #FFF1F0;
+  color: #FF4D4F;
+  font-size: 20rpx;
+  border-radius: 20rpx;
+}
+
+.user-phone {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.user-stats {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.user-stats text {
+  font-size: 22rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.credit-tag {
+  padding: 4rpx 12rpx;
+  background: #FFF7E6;
+  color: #FA8C16;
+  border-radius: 20rpx;
+}
+
+.register-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.user-actions {
+  
+}
+
+.action-btn {
+  padding: 12rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+}
+
+.ban-btn {
+  background: #FFF1F0;
+  color: #FF4D4F;
+}
+
+.unban-btn {
+  background: #F6FFED;
+  color: #52C41A;
+}
+
+.loading, .no-more, .empty {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999;
+  font-size: 26rpx;
+}
